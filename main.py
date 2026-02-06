@@ -1,24 +1,22 @@
+# Performance task ready
 
+joke_list = [
+["Knock Knock", "Calder", "Calder police Ive been robbed!"],                                    # All three jokes are in this list
+["Knock Knock", "Tank", "You are welcome!"],
+["Knock Knock", "Broken pencil", "Nevermind it's pointless!"]
+]
 
+import random  
 
-# make this performance task ready for submission
-# To give the user a fun experience hearing knock knock jokes
-
-import random  #allows random selections in the program
-
-#
-def tell_joke(jokes):
-    joke = random.choice(jokes)
-    for line in joke:
-        input(line)
+def tell_joke(joke_list):
+    selected_joke = random.choice(joke_list)                                                         # selects a random joke in joke_list
+    for joke in selected_joke:
+        input(joke)
         print(joke[-1])
-
-
-def get_feedback():
-    rate = int(input("Please rate our game 1-10: "))
-    print(str(rate * 10) + " percent satisfaction rate")
-
     
+def get_feedback():
+    rate = int(input("Please rate our game 1-10: "))                                        # after the user is finished they will give feedback
+    print(str(rate * 10) + " percent satisfaction rate")                                # MATH     miltiplies answer by 10 to gewt a percentage. 
     recommend = input("Would you reccomend this game to a friend?")
     if recommend in ["yes","maybe"]:
         print("Thanks, we appreciate it!")
@@ -26,24 +24,24 @@ def get_feedback():
         print("Sorry you didn't enjoy the game")
 
 
-#added a list with the three different jokes
 
-jokes = [
-["Knock Knock,""Calder," "Calder police Ive been robbed!"],
-["Knock Knock," "Tank," "You are welcome!"],
-["Knock Knock," "Broken pencil," "Nevermind it's pointless!"]
-]
 
-answer = input("Do you want to hear a joke? ").lower()
-while answer =="yes":
+
+
+
+# INPUT STARTS HERE
+
+answer = input("Do you want to hear a joke? ").lower()                                   # Asks users if they want to hear a joke
+while answer =="yes":                                                                    # WHILE LOOP: when answer is yes it'll give them a random joke and then ask if tehy want another of if they're finished
         print("Cool! I'll tell you one!")
-        tell_joke(jokes)
+        tell_joke(joke_list)
         answer = input("Do you want to hear another joke (say yes) or are you finished (say finished) ?").lower()
 
-if answer =="finished":
+if answer =="finished":                                                                  # IF: They say finish then ask user for feedback
     get_feedback()
+
 else:
-     print("Okay thanks for nothing!")
+     print("See you later!")                                                             # ELSE: They say "no" or anythinng else for hearing a joke it will print "See you later"
     
 
 
