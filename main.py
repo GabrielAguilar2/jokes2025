@@ -16,30 +16,36 @@ def tell_joke(jokes):
 
 def get_feedback():
     rate = int(input("Please rate our game 1-10: "))
-    print(str(rate * 10) + "percent satisfaction rate")
+    print(str(rate * 10) + " percent satisfaction rate")
 
     
     recommend = input("Would you reccomend this game to a friend?")
     if recommend in ["yes","maybe"]:
         print("Thanks, we appreciate it!")
     else:
-        print("Sorry you didn't enjoy the game :( )")
+        print("Sorry you didn't enjoy the game")
 
 
 #added a list with the three different jokes
 
-jokes =[
-["Knock Knock,""Calder," "Calder police Ive been robbed!"]
-["Knock Knock," "Tank," "You are welcome!"]
+jokes = [
+["Knock Knock,""Calder," "Calder police Ive been robbed!"],
+["Knock Knock," "Tank," "You are welcome!"],
 ["Knock Knock," "Broken pencil," "Nevermind it's pointless!"]
 ]
 
-
-answer = input("Do you want to hear a joke?").lower()
+answer = input("Do you want to hear a joke? ").lower()
 while answer =="yes":
         print("Cool! I'll tell you one!")
         tell_joke(jokes)
-        answer = input("Do you want to hear another joke?")
+        answer = input("Do you want to hear another joke (say yes) or are you finished (say finished) ?").lower()
+
+if answer =="finished":
+    get_feedback()
+else:
+     print("Okay thanks for nothing!")
+    
+
 
 
 
