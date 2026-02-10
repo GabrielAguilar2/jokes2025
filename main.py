@@ -16,7 +16,10 @@ reviews = []                                                                    
 def tell_joke(joke_list):
     selected_joke = random.choice(joke_list)                                                         # selects a random joke in joke_list
     for joke in selected_joke:
-        print(joke)
+        if joke.lower() == "knock knock":
+             print("Knock knock :)")
+        else:
+             print(joke)
         input("")
     
 def get_feedback(ratings, reviews):
@@ -46,11 +49,11 @@ def get_feedback(ratings, reviews):
 
 # INPUT STARTS HERE
 
-answer = input("Do you want to hear a joke or are you finished? ").lower()                                                                    # Asks users if they want to hear a joke
+answer = input("Do you want to hear a joke? ").lower()                                                                    # Asks users if they want to hear a joke
 while answer =="yes":                                                        # WHILE LOOP: when answer is yes it'll give them a random joke and then ask if tehy want another of if they're finished
         print("Cool! Let's do it! ")
         tell_joke(joke_list)
-        answer = input("Do you want to hear another joke? ").lower()
+        answer = input("Do you want to hear another joke or are you finished? ").lower()
 
 if answer in ["finished","done","im done","im finished"]:                                               # IF They say finish then ask user for feedback
     get_feedback(ratings, reviews)
