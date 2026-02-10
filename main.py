@@ -1,27 +1,41 @@
 # Performance task ready
 
+import random 
+
 joke_list = [
 ["Knock Knock", "Calder", "Calder police Ive been robbed!"],                                    # All three jokes are in this list
 ["Knock Knock", "Tank", "You are welcome!"],
 ["Knock Knock", "Broken pencil", "Nevermind it's pointless!"]
 ]
 
-import random  
+ratings = []
+reviews = []
+
 
 def tell_joke(joke_list):
     selected_joke = random.choice(joke_list)                                                         # selects a random joke in joke_list
     for joke in selected_joke:
-        input(joke)
-        print(joke[-1])
+        print(joke)
+        input("")
     
-def get_feedback():
-    rate = int(input("Please rate our game 1-10: "))                                        # after the user is finished they will give feedback
-    print(str(rate * 10) + " percent satisfaction rate")                                # MATH     miltiplies answer by 10 to gewt a percentage. 
-    recommend = input("Would you reccomend this game to a friend?")
-    if recommend in ["yes","maybe"]:
-        print("Thanks, we appreciate it!")
+def get_feedback(ratings, reviews):
+    rating = int(input("Okay! Please rate our jokes 1-10: "))                                        # after the user is finished they will give feedback
+    ratings.append(rating)
+
+    review = input("Please type out a review with any praises or criticisms: ")
+    reviews.append(review)
+
+    average = sum(ratings) / len(ratings)
+    print("___________________________________________")
+
+    print("Thanks for your feedback!")
+    print("Average rating among all users: "), round(average, 1), "/ 10"
+
+    tell_friend = input("Will you tell any of your friends one of these jokes? ")
+    if tell_friend in ["yes","maybe","sure","yeah","of course","i will"]:
+        print("Thanks, we appreciate it! ")
     else:
-        print("Sorry you didn't enjoy the game")
+        print("Sorry you didn't enjoy the game ")
 
 
 
@@ -31,17 +45,17 @@ def get_feedback():
 
 # INPUT STARTS HERE
 
-answer = input("Do you want to hear a joke? ").lower()                                   # Asks users if they want to hear a joke
-while answer =="yes":                                                                    # WHILE LOOP: when answer is yes it'll give them a random joke and then ask if tehy want another of if they're finished
-        print("Cool! I'll tell you one!")
+answer = input("Do you want to hear a joke? ").lower()                                                                                       # Asks users if they want to hear a joke
+while answer =="yes":                                                                                                              # WHILE LOOP: when answer is yes it'll give them a random joke and then ask if tehy want another of if they're finished
+        print("Cool! Let's do it! ")
         tell_joke(joke_list)
-        answer = input("Do you want to hear another joke (say yes) or are you finished (say finished) ?").lower()
+        answer = input("Do you want to hear another joke? ").lower()
 
-if answer =="finished":                                                                  # IF: They say finish then ask user for feedback
-    get_feedback()
+if answer in ["no", "finished","done","im done","im finished","nah"]:                                                                                                        # IF: They say finish then ask user for feedback
+    get_feedback(ratings, reviews)
 
 else:
-     print("See you later!")                                                             # ELSE: They say "no" or anythinng else for hearing a joke it will print "See you later"
+     print("See you later!")                                                                                                   # ELSE: They say "no" or anythinng else for hearing a joke it will print "See you later"
     
 
 
